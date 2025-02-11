@@ -27,7 +27,7 @@ public class Posts_Chapter07 {
 			con = DriverManager.getConnection(
 				"jdbc:mysql://localhost/challenge_java",
 				"root",
-				"*****"
+				"Yuki8203#"
 			);
 			
 			System.out.println("データベース接続成功:" + con );
@@ -43,9 +43,9 @@ public class Posts_Chapter07 {
 				statement.setString(3, userList[i][2]);
 				statement.setString(4, userList[i][3]);
 		
-				rowCnt = statement.executeUpdate();
+				rowCnt += statement.executeUpdate();
 			}
-			System.out.println("5件のレコードが追加されました");
+			System.out.println(rowCnt + "件のレコードが追加されました");
 			
 			//レコード検索
 			sql = "SELECT * FROM posts WHERE user_id= 1002;";
@@ -57,8 +57,8 @@ public class Posts_Chapter07 {
 				Date postedAt = result.getDate("posted_at");
 				String contents = result.getString("post_content");
 				int like = result.getInt("likes");
-				System.out.println(result.getRow() + "投稿日時=" + postedAt
-											+ "投稿内容=" + contents + "/いいね数=" + like );
+				System.out.println(result.getRow() + "件目：投稿日時=" + postedAt
+											+ "／投稿内容=" + contents + "／いいね数=" + like );
 				
 			}
 			
